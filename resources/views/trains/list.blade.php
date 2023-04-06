@@ -8,6 +8,7 @@
                         <h5 class="card-title">{{ $train->azienda }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{ $train->stazione_partenza }}</h6>
                         <span class="card-text">{{ $train->stazione_arrivo }}</span>
+                        <span>{{ $train->codice_treno }}</span>
                         <span>{{ $train->orario_partenza }}</span>
                         <span>{{ $train->orario_arrivo }}</span>
                     </div>
