@@ -6,6 +6,8 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 // Importo il Modello del Treno
 use App\Models\Train;
+// Importare il faker
+use Faker\Generator as Faker;
 
 class TrainSeeder extends Seeder
 {
@@ -14,21 +16,23 @@ class TrainSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
         // Istanzio un nuovo modello di treno
-        $new_train = new Train;
+        for ($i = 0; $i < 30; $i++) {
+            $new_train = new Train;
 
-        $new_train->azienda = 'Italo';
-        $new_train->stazione_partenza = 'Roma';
-        $new_train->stazione_arrivo = 'Milano';
-        $new_train->orario_partenza = '19:00:00';
-        $new_train->orario_arrivo = '22:00:00';
-        $new_train->codice_treno = 'PFR5YH2';
-        $new_train->numero_carrozze = '6';
-        $new_train->in_orario = '1';
-        $new_train->cancellato = '0';
+            $new_train->azienda = $faker->randomElement(["Trenitalia", "Italo", "Trenord SpA", "FerrovieNord"]);
+            $new_train->stazione_partenza = $faker->city();
+            $new_train->stazione_arrivo = $faker->city();
+            $new_train->orario_partenza = $faker->time();
+            $new_train->orario_arrivo = $faker->time();
+            $new_train->codice_treno = $faker->randomNumber(6, true);
+            $new_train->numero_carrozze = $faker->randomDigitNotNull();
+            $new_train->in_orario = $faker->boolean();
+            $new_train->cancellato = $faker->boolean();
 
-        $new_train->save();
+            $new_train->save();
+        };
     }
 }
