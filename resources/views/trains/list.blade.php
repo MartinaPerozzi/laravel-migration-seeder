@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('page_name', 'TRENI')
+
 @section('card_content')
     <div class="row row-cols-4">
         @forelse ($trains as $train)
