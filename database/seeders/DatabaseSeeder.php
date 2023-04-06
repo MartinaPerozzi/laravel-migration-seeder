@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // per poter usare il comando php artisan db:seed una volta per ogni Seeder
         $this->call([
             TrainSeeder::class
         ]);
